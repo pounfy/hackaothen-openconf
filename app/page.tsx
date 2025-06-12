@@ -131,17 +131,17 @@ function AccessibilityAppContent() {
                 <div className="flex items-center justify-between">
                   <CardTitle className="flex items-center gap-2">
                     <Zap className="w-5 h-5 text-blue-600" />
-                    Quick Accessibility Settings
+                    {t("quick_accessibility_settings")}
                   </CardTitle>
                   <VoiceToggleButton />
                 </div>
-                <CardDescription>Adjust these settings to customize your experience</CardDescription>
+                <CardDescription>{t("adjust_settings_customize")}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="font-size" className="text-sm font-medium">
-                      Font Size: {fontSize[0]}px
+                      {t("font_size")}: {fontSize[0]}px
                     </label>
                     <Slider
                       id="font-size"
@@ -156,21 +156,21 @@ function AccessibilityAppContent() {
 
                   <div className="flex items-center justify-between">
                     <label htmlFor="high-contrast" className="text-sm font-medium">
-                      High Contrast
+                      {t("high_contrast_mode")}
                     </label>
                     <Switch id="high-contrast" checked={highContrast} onCheckedChange={setHighContrast} />
                   </div>
 
                   <div className="flex items-center justify-between">
                     <label htmlFor="reduced-motion" className="text-sm font-medium">
-                      Reduced Motion
+                      {t("reduced_motion")}
                     </label>
                     <Switch id="reduced-motion" checked={reducedMotion} onCheckedChange={setReducedMotion} />
                   </div>
 
                   <div className="flex items-center justify-between">
                     <label htmlFor="screen-reader" className="text-sm font-medium">
-                      Screen Reader Mode
+                      {t("screen_reader_mode")}
                     </label>
                     <Switch id="screen-reader" checked={screenReader} onCheckedChange={setScreenReader} />
                   </div>
@@ -183,29 +183,29 @@ function AccessibilityAppContent() {
               {[
                 {
                   icon: Eye,
-                  title: "Visual Accessibility",
-                  description: "High contrast, font scaling, and color adjustments",
+                  title: t("visual_accessibility"),
+                  description: t("visual_description"),
                   status: "active",
                   color: "bg-blue-500",
                 },
                 {
                   icon: Ear,
-                  title: "Audio Accessibility",
-                  description: "Screen reader support and audio descriptions",
+                  title: t("auditory_accessibility"),
+                  description: t("auditory_description"),
                   status: "active",
                   color: "bg-green-500",
                 },
                 {
                   icon: Hand,
-                  title: "Motor Accessibility",
-                  description: "Keyboard navigation and gesture alternatives",
+                  title: t("motor_accessibility"),
+                  description: t("motor_description"),
                   status: "partial",
                   color: "bg-yellow-500",
                 },
                 {
                   icon: Brain,
-                  title: "Cognitive Accessibility",
-                  description: "Simplified interfaces and clear navigation",
+                  title: t("cognitive_accessibility"),
+                  description: t("cognitive_description"),
                   status: "active",
                   color: "bg-purple-500",
                 },
@@ -239,7 +239,11 @@ function AccessibilityAppContent() {
                               : "outline"
                         }
                       >
-                        {feature.status === "active" ? "Active" : feature.status === "partial" ? "Partial" : "Inactive"}
+                        {feature.status === "active"
+                          ? t("active")
+                          : feature.status === "partial"
+                            ? t("partial")
+                            : t("inactive")}
                       </Badge>
                     </div>
                   </CardHeader>
@@ -258,9 +262,9 @@ function AccessibilityAppContent() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  Accessibility Score
+                  {t("accessibility_score")}
                 </CardTitle>
-                <CardDescription>Your current accessibility compliance level</CardDescription>
+                <CardDescription>{t("current_compliance")}</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -272,15 +276,15 @@ function AccessibilityAppContent() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="w-4 h-4 text-green-600" />
-                      <span>24 checks passed</span>
+                      <span>24 {t("checks_passed")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 text-yellow-600" />
-                      <span>3 warnings</span>
+                      <span>3 {t("warnings")}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Info className="w-4 h-4 text-blue-600" />
-                      <span>2 recommendations</span>
+                      <span>2 {t("recommendations")}</span>
                     </div>
                   </div>
                 </div>
